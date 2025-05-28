@@ -1,0 +1,34 @@
+env:
+  seed: 2
+  name: Autoscaling-v1
+  traffic_pattern: CONSTANT
+  gamma: 5
+  app_size: A12  # A12, T
+  app_num: 1
+  dataGen: 10000    # How many generations to iterate
+  # evalNum: 1    # How many problem instances are used to evaluate each individual
+  generateWay: rotation
+  workload_pattern: 0   # 0: NASA HTTP; 
+agent:
+  name: HGAT
+#  state_num: 8
+#  action_num: 1
+#  discrete_action: True
+  add_gru: False
+optim:
+  name: es_openai
+  population_size: 60
+  maximization: True
+  generation_num: 3000
+  input_running_mean_std: True
+  input_clip: False
+  input_clip_value_min: Null
+  input_clip_value_max: Null
+  reward_shaping: False
+  reward_norm: False
+  sigma_init: 0.05 # noise standard deviation
+  sigma_decay: 0.999
+  learning_rate: 0.01
+  learning_rate_decay: 0.9999
+  reinforce_learning_rate: 0.001
+  weight_decay: 0
